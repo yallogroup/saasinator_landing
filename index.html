@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>saasinator.ai — Just In Time Software</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html,body{width:100%;height:100%;overflow:hidden;background:#06060F;font-family:'Plus Jakarta Sans',sans-serif;-webkit-font-smoothing:antialiased}
+html,body{width:100%;height:100%;overflow:hidden;background:#0a0b09;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
 
 /* ── CANVAS LAYERS ── */
 #grid-canvas{display:none}
@@ -17,8 +17,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:#06060F;font-family:
 .grid-bg{
   position:fixed;inset:0;z-index:0;pointer-events:none;
   background-image:
-    linear-gradient(rgba(167,139,250,0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(167,139,250,0.055) 1px, transparent 1px);
+    linear-gradient(rgba(255,107,71,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,107,71,0.04) 1px, transparent 1px);
   background-size:48px 48px;
   mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
   -webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
@@ -41,7 +41,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#06060F;font-family:
 }
 .mark-outer svg{
   width:100%;height:100%;display:block;
-  filter:drop-shadow(0 4px 32px rgba(124,58,237,.45));
+  filter:drop-shadow(0 4px 32px rgba(255,107,71,.3));
 }
 .orbit{
   position:absolute;
@@ -53,27 +53,27 @@ html,body{width:100%;height:100%;overflow:hidden;background:#06060F;font-family:
 }
 .orbit-1{
   width:96px;height:96px;
-  border-color:rgba(124,58,237,.3);
+  border-color:rgba(255,107,71,.28);
   animation:orbit-spin 12s linear infinite;
 }
 .orbit-2{
   width:120px;height:120px;
-  border-color:rgba(124,58,237,.12);
+  border-color:rgba(255,107,71,.1);
   animation:orbit-spin 20s linear infinite reverse;
 }
 .orbit-dot{
   position:absolute;
   width:5px;height:5px;
   border-radius:50%;
-  background:#A78BFA;
+  background:#ff6b47;
   top:-2.5px;
   left:50%;
   transform:translateX(-50%);
-  box-shadow:0 0 10px rgba(167,139,250,.9);
+  box-shadow:0 0 10px rgba(255,107,71,.8);
 }
 .orbit-dot-2{
-  background:#22D3EE;
-  box-shadow:0 0 10px rgba(34,211,238,.8);
+  background:#3d9be9;
+  box-shadow:0 0 10px rgba(61,155,233,.7);
   top:auto;bottom:-2.5px;
 }
 @keyframes orbit-spin{
@@ -83,20 +83,20 @@ html,body{width:100%;height:100%;overflow:hidden;background:#06060F;font-family:
 
 /* ── WORDMARK ── */
 .wordmark{
-  font-family:'DM Mono',monospace;
+  font-family:'Space Grotesk',sans-serif;
   font-size:clamp(42px,8vw,88px);
-  font-weight:600;
-  letter-spacing:-3px;
+  font-weight:700;
+  letter-spacing:-2px;
   line-height:1;
   margin-bottom:14px;
-  color:#F0EFFE;
+  color:#f3f0e7;
   text-align:center;
   opacity:0;
   animation:rise .8s cubic-bezier(.34,1.56,.64,1) forwards .2s;
   transition:transform .12s ease-out;
 }
 .wordmark .ai{
-  background:linear-gradient(135deg,#A78BFA,#818CF8);
+  background:linear-gradient(135deg,#ff6b47,#c45e9e);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   background-clip:text;
@@ -108,28 +108,72 @@ html,body{width:100%;height:100%;overflow:hidden;background:#06060F;font-family:
   margin-bottom:28px;text-align:center;
 }
 .t-eye{
-  font-family:'DM Mono',monospace;
+  font-family:'Space Mono',monospace;
   font-size:clamp(9px,1.5vw,11px);
   letter-spacing:5px;text-transform:uppercase;
-  color:rgba(167,139,250,.55);
+  color:rgba(196,94,158,.65);
   opacity:0;animation:rise .6s ease forwards .5s;
 }
 .t-main{
   font-size:clamp(14px,2.2vw,18px);
-  font-weight:300;color:rgba(240,239,254,.4);
+  font-weight:300;color:rgba(243,240,231,.4);
   letter-spacing:-.2px;line-height:1.5;
   opacity:0;animation:rise .6s ease forwards .65s;
 }
 .t-main strong{
-  color:rgba(240,239,254,.85);font-weight:700;
+  color:rgba(243,240,231,.85);font-weight:600;
+}
+
+/* ── PROGRESS BAR ── */
+.progress-wrap{
+  display:flex;align-items:center;gap:12px;
+  background:rgba(255,107,71,.07);
+  border:1px solid rgba(255,107,71,.2);
+  border-radius:40px;
+  padding:10px 20px;
+  margin-bottom:28px;
+  opacity:0;animation:rise .6s ease forwards .85s;
+}
+.p-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:#ff6b47;
+  flex-shrink:0;
+  animation:dot-glow 1.8s ease-in-out infinite;
+}
+@keyframes dot-glow{
+  0%,100%{box-shadow:0 0 0 0 rgba(255,107,71,.5);transform:scale(1)}
+  50%{box-shadow:0 0 0 6px rgba(255,107,71,0);transform:scale(1.25)}
+}
+.p-bar{
+  width:120px;height:4px;
+  background:rgba(255,107,71,.12);
+  border-radius:4px;overflow:hidden;
+}
+.p-fill{
+  height:100%;
+  background:linear-gradient(90deg,#ff6b47,#3d9be9);
+  border-radius:4px;
+  animation:bar-fill 7s cubic-bezier(.4,0,.2,1) infinite;
+}
+@keyframes bar-fill{
+  0%{width:0}
+  65%{width:88%}
+  80%{width:88%}
+  100%{width:0}
+}
+.p-label{
+  font-family:'Space Mono',monospace;
+  font-size:10px;font-weight:400;
+  letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,107,71,.7);white-space:nowrap;
 }
 
 /* ── JIT LINE ── */
 .jit{
-  font-family:'DM Mono',monospace;
+  font-family:'Space Mono',monospace;
   font-size:clamp(9px,1.4vw,11px);
   letter-spacing:7px;text-transform:uppercase;
-  color:rgba(240,239,254,.38);
+  color:rgba(243,240,231,.12);
   margin-bottom:36px;
   opacity:0;animation:rise .6s ease forwards 1.05s;
 }
@@ -140,119 +184,49 @@ html,body{width:100%;height:100%;overflow:hidden;background:#06060F;font-family:
   opacity:0;animation:rise .6s ease forwards 1.25s;
 }
 .s-label{
-  font-family:'DM Mono',monospace;
+  font-family:'Space Mono',monospace;
   font-size:9px;letter-spacing:2px;text-transform:uppercase;
-  color:rgba(240,239,254,.2);
+  color:rgba(243,240,231,.2);
 }
 .s-link{
   display:flex;align-items:center;gap:7px;
   text-decoration:none;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(124,58,237,.3);
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,107,71,.25);
   border-radius:30px;
   padding:8px 16px;
-  box-shadow:0 2px 16px rgba(124,58,237,.12);
+  box-shadow:0 2px 16px rgba(255,107,71,.07);
   transition:all .25s;
 }
 .s-link:hover{
-  background:rgba(124,58,237,.12);
-  border-color:rgba(167,139,250,.55);
+  background:rgba(255,107,71,.09);
+  border-color:rgba(255,107,71,.5);
   transform:translateY(-2px);
-  box-shadow:0 6px 24px rgba(124,58,237,.25);
+  box-shadow:0 6px 24px rgba(255,107,71,.2);
 }
 .s-link svg{
   width:13px;height:13px;
-  fill:rgba(167,139,250,.65);
+  fill:rgba(255,107,71,.6);
   transition:fill .25s;flex-shrink:0;
 }
-.s-link:hover svg{fill:#A78BFA}
+.s-link:hover svg{fill:#ff6b47}
 .s-link span{
-  font-family:'DM Mono',monospace;
-  font-size:10px;font-weight:500;
-  color:rgba(167,139,250,.65);
+  font-family:'Space Mono',monospace;
+  font-size:10px;font-weight:400;
+  color:rgba(255,107,71,.6);
   letter-spacing:1px;
   transition:color .25s;
 }
-.s-link:hover span{color:#A78BFA}
-
-/* ── LAUNCH BLOCK ── */
-.launch-block{
-  display:flex;flex-direction:column;align-items:center;gap:10px;
-  margin-top:28px;
-  opacity:0;animation:rise .6s ease forwards 1.45s;
-}
-.launch-divider{
-  display:flex;align-items:center;gap:14px;
-  width:260px;
-}
-.launch-divider::before,.launch-divider::after{
-  content:'';flex:1;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(167,139,250,.2),transparent);
-}
-.launch-divider span{
-  font-family:'DM Mono',monospace;
-  font-size:7px;letter-spacing:3px;text-transform:uppercase;
-  color:rgba(167,139,250,.3);
-  white-space:nowrap;
-}
-.launch-main{
-  font-size:clamp(15px,2.2vw,20px);
-  font-weight:700;
-  color:rgba(240,239,254,.82);
-  letter-spacing:-.3px;
-  text-align:center;
-}
-.launch-main .jit-accent{
-  background:linear-gradient(135deg,#A78BFA,#22D3EE);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-}
-.launch-sub{
-  font-family:'DM Mono',monospace;
-  font-size:clamp(9px,1.3vw,10px);
-  letter-spacing:4px;text-transform:uppercase;
-  color:rgba(167,139,250,.45);
-}
-/* animated build bar */
-.build-track{
-  display:flex;align-items:center;gap:8px;
-  margin-top:4px;
-}
-.build-segments{
-  display:flex;gap:3px;
-}
-.build-seg{
-  width:18px;height:3px;border-radius:2px;
-  background:rgba(124,58,237,.18);
-  animation:seg-fill 2.8s ease-in-out infinite;
-}
-.build-seg:nth-child(1){animation-delay:0s}
-.build-seg:nth-child(2){animation-delay:.18s}
-.build-seg:nth-child(3){animation-delay:.36s}
-.build-seg:nth-child(4){animation-delay:.54s}
-.build-seg:nth-child(5){animation-delay:.72s}
-.build-seg:nth-child(6){animation-delay:.90s}
-.build-seg:nth-child(7){animation-delay:1.08s}
-.build-seg:nth-child(8){animation-delay:1.26s}
-@keyframes seg-fill{
-  0%,100%{background:rgba(124,58,237,.18)}
-  40%,60%{background:linear-gradient(90deg,#7C3AED,#22D3EE);box-shadow:0 0 6px rgba(124,58,237,.4)}
-}
-.build-label{
-  font-family:'DM Mono',monospace;
-  font-size:8px;letter-spacing:2px;text-transform:uppercase;
-  color:rgba(167,139,250,.35);
-}
+.s-link:hover span{color:#ff6b47}
 
 /* ── CORNER ── */
 .corner{
   position:fixed;bottom:20px;left:0;right:0;
   text-align:center;
-  font-family:'DM Mono',monospace;
+  font-family:'Space Mono',monospace;
   font-size:8px;letter-spacing:3px;text-transform:uppercase;
-  color:rgba(255,255,255,.28);z-index:3;
-  opacity:0;animation:rise .6s ease forwards 1.7s;
+  color:rgba(243,240,231,.18);z-index:3;
+  opacity:0;animation:rise .6s ease forwards 1.5s;
   white-space:nowrap;
 }
 
@@ -271,20 +245,20 @@ html,body{width:100%;height:100%;overflow:hidden;background:#06060F;font-family:
 .blob-1{
   width:600px;height:600px;
   top:-180px;right:-120px;
-  background:radial-gradient(circle,rgba(124,58,237,.12),transparent 70%);
+  background:radial-gradient(circle,rgba(196,94,158,.1),transparent 70%);
   animation:blob-drift 14s ease-in-out infinite alternate;
 }
 .blob-2{
   width:500px;height:500px;
   bottom:-120px;left:-100px;
-  background:radial-gradient(circle,rgba(8,145,178,.08),transparent 70%);
+  background:radial-gradient(circle,rgba(61,155,233,.07),transparent 70%);
   animation:blob-drift 18s ease-in-out infinite alternate-reverse;
 }
 .blob-3{
   width:400px;height:400px;
   top:50%;left:50%;
   transform:translate(-50%,-50%);
-  background:radial-gradient(circle,rgba(167,139,250,.07),transparent 70%);
+  background:radial-gradient(circle,rgba(255,107,71,.06),transparent 70%);
   animation:blob-drift 10s ease-in-out infinite alternate;
 }
 @keyframes blob-drift{
@@ -293,7 +267,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#06060F;font-family:
 }
 
 @media(max-width:480px){
-  .wordmark{letter-spacing:-1.5px}
+  .wordmark{letter-spacing:-1px}
   .orbit-1{width:84px;height:84px}
   .orbit-2{width:104px;height:104px}
   .p-bar{width:80px}
@@ -322,8 +296,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:#06060F;font-family:
     <svg viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="mg" x1="0" y1="0" x2="70" y2="70" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stop-color="#A78BFA"/>
-          <stop offset="100%" stop-color="#818CF8"/>
+          <stop offset="0%" stop-color="#ff6b47"/>
+          <stop offset="100%" stop-color="#c45e9e"/>
         </linearGradient>
       </defs>
       <rect x="2" y="2" width="36" height="36" rx="4" fill="url(#mg)"/>
@@ -340,6 +314,12 @@ html,body{width:100%;height:100%;overflow:hidden;background:#06060F;font-family:
     <div class="t-main">Build what you need. <strong>Own what you build.</strong></div>
   </div>
 
+  <div class="progress-wrap">
+    <div class="p-dot"></div>
+    <div class="p-bar"><div class="p-fill"></div></div>
+    <div class="p-label">Brewing</div>
+  </div>
+
   <div class="jit">Just &nbsp;In &nbsp;Time &nbsp;Software</div>
 
   <div class="social-row">
@@ -350,26 +330,6 @@ html,body{width:100%;height:100%;overflow:hidden;background:#06060F;font-family:
       </svg>
       <span>saasinator</span>
     </a>
-  </div>
-
-  <!-- LAUNCH BLOCK -->
-  <div class="launch-block" style="margin-top:48px">
-    <div class="launch-divider"><span>coming soon</span></div>
-    <div class="launch-main">Arriving <span class="jit-accent">just in time.</span></div>
-    <div class="launch-sub">Something is being built here</div>
-    <div class="build-track">
-      <div class="build-segments">
-        <div class="build-seg"></div>
-        <div class="build-seg"></div>
-        <div class="build-seg"></div>
-        <div class="build-seg"></div>
-        <div class="build-seg"></div>
-        <div class="build-seg"></div>
-        <div class="build-seg"></div>
-        <div class="build-seg"></div>
-      </div>
-      <div class="build-label">building</div>
-    </div>
   </div>
 
 </div>
@@ -397,7 +357,7 @@ function drawGrid(){
     for(let y=0; y<=H; y+=STEP){
       gx.beginPath();
       gx.arc(x, y, 1.1, 0, Math.PI*2);
-      gx.fillStyle = 'rgba(167,139,250,0.12)';
+      gx.fillStyle = 'rgba(255,107,71,0.07)';
       gx.fill();
     }
   }
@@ -433,7 +393,7 @@ window.addEventListener('mousemove', e => {
       r: 0, maxR: 60 + Math.random()*60,
       alpha: 0.4,
       color: Math.random() > 0.5
-        ? [167,139,250] : [34,211,238],
+        ? [255,107,71] : [61,155,233],
     });
   }
 });
@@ -454,8 +414,8 @@ function drawWaves(){
       mouse.x,mouse.y,0,
       mouse.x,mouse.y,160
     );
-    grad.addColorStop(0,'rgba(124,58,237,0.09)');
-    grad.addColorStop(1,'rgba(124,58,237,0)');
+    grad.addColorStop(0,'rgba(255,107,71,0.07)');
+    grad.addColorStop(1,'rgba(255,107,71,0)');
     wx.fillStyle = grad;
     wx.fillRect(0,0,WW,WH);
   }
@@ -482,8 +442,8 @@ function drawWaves(){
     }
     const alpha = 0.06 + (i%2)*0.03;
     wx.strokeStyle = i%2===0
-      ? `rgba(167,139,250,${alpha})`
-      : `rgba(34,211,238,${alpha*0.7})`;
+      ? `rgba(255,107,71,${alpha})`
+      : `rgba(61,155,233,${alpha*0.7})`;
     wx.lineWidth = 1.5;
     wx.stroke();
   }
